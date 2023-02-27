@@ -14,23 +14,27 @@ int main() {
 
     while (true) {
         cin >> input;
-        find++;
         if (input == "exit") {
             break;
         }
-        for (int j = 0; j <= last_word; j++) {
-            if (data[j].word == input) {
-                data[j].count++;
-            } else {
-                data[last_word].word = input;
-                last_word++;
+        find = 0;
+        for (i = 0; i < last_word; i++){
+            if (data[i].word == input){
+                data[i].count++;
+                find = 1;
+                break;
             }
+        }
+        if (!find) {
+            data[last_word].word = input;
+            data[last_word].count = 1;
+            last_word++;
         }
     }
 
     cout << "Output:" << endl;
 
-    for (i = 0; i < find; i++) {
+    for (i = 0; i < last_word; i++) {
         cout << data[i].word << " = " << data[i].count << endl;
     }
 

@@ -57,7 +57,7 @@ void delete(NodePtr *initPtr, int value) {
                 *initPtr = current->next;
                 free(current);
             } else {
-                previous->next = current->next;
+                previous->next = current->next;    
                 free(current);
             }
         }

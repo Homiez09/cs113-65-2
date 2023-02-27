@@ -1,8 +1,10 @@
 #include <stdio.h>
 #include <string.h>
 
-struct Word{
-    char *word;
+struct Word
+{
+
+    char word[50];
     int count;
 };
 
@@ -12,19 +14,32 @@ int main()
     int i, last_word = 0, find = 0;
     struct Word data[20] = {0};
     scanf("%20s", input);
-    i = 0;
-    while (strcmp(input, "exit")){
-        for (int j = 0; j < i; j++) {
-            if ((strcmp(input, data[i].word)) == 0) {
-                printf("123");
+
+    while (strcmp(input, "exit") != 0 && last_word < 20)
+    {
+
+        find = 0;
+        for (i = 0; i < last_word; i++)
+        {
+            if (strcmp(data[i].word, input) == 0)
+            {
+                data[i].count++;
+                find = 1;
+                break;
             }
         }
-        scanf(" %20s", input);
-        i++;
+        if (!find)
+        {
+            strcpy(data[last_word].word, input);
+            data[last_word].count = 1;
+            last_word++;
+        }
+        scanf("%20s", input);
     }
 
     printf("Output:\n");
-    for (i = 0; i < last_word; i++){
+    for (i = 0; i < last_word; i++)
+    {
         printf("%s = %d\n", data[i].word, data[i].count);
     }
 }
