@@ -1,4 +1,5 @@
 #include <iostream>
+#include <algorithm>
 
 using namespace std;
 
@@ -10,19 +11,8 @@ int main(void) {
         cin >> data[i];
     }
 
-    //sort data
-    for (int i = 0; i < n; ++i) {
-        for (int j = i + 1; j < n; ++j){
-            if (data[i] > data[j]) {
-                a =  data[i];
-                data[i] = data[j];
-                data[j] = a;
-            
-            }
-        }
-    }
+    sort(data, data + n);
 
-    // find max
     int max = data[n-1];   
     
     for (int i = 1, j = 0; i <= max; i++){
