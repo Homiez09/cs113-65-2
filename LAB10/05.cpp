@@ -18,9 +18,7 @@ public:
         this->minute = minute;
         this->second = second;
         if (hour >= 24) {
-            this->hour = 0;
-            this->minute = 0;
-            this->second = 0;
+            this->hour = this->hour % 24;
         }
     }
 
@@ -29,9 +27,7 @@ public:
         this->minute = (duration % 3600) / 60;
         this->second = duration % 60;
         if (hour >= 24) {
-            this->hour = 0;
-            this->minute = 0;
-            this->second = 0;
+            this->hour = this->hour % 24;
         }
     }
 
