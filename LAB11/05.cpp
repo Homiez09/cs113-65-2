@@ -21,6 +21,15 @@ public:
     void sleep(int);
 };
 
+class Pet : public Animal {
+    private:
+        string name;
+    public:
+        Pet(string, int, int, int);
+        string getName();
+        void setName(string);
+};
+
 Animal::Animal(int happiness, int energy, int fullness) : happiness(happiness), energy(energy), fullness(fullness) {}
 
 /* Animal::Animal(int happiness, int energy, int fullness) {
@@ -84,14 +93,22 @@ void Animal::sleep(int hour) {
     if (hour <= 0 || this->energy >= 100) return;
     this->energy += 10*hour;
     this->fullness -= 10*hour;
-    
+}
+
+Pet::Pet(string name, int happiness, int energy, int fullness) : Animal(happiness, energy, fullness) {
+    this->name = name;
+}
+
+void Pet::setName(string name) {
+    this->name = name;
+}
+
+string Pet::getName() {
+    return this->name;
 }
 
 int main(void) {
-    Animal dog(70, 1, 70);
-    //dog.eat(30);
-    //dog.play(1);
-    dog.sleep(10);
-    cout << dog.getHappiness() << "/" << dog.getEnergy() << "/" << dog.getFullness() << endl;
-
+    Pet dog("Name",100,70,100);
+    dog.setName("bob");
+    cout << dog.getName() << ": " << dog.getHappiness() << "/"<< dog.getEnergy() << "/" << dog.getFullness() << endl;
 }

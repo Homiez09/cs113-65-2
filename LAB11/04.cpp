@@ -1,9 +1,8 @@
 #include <iostream>
 using namespace std;
 
-class Animal
-{
-private:
+class Animal{
+protected:
     int happiness;
     int energy;
     int fullness;
@@ -19,6 +18,13 @@ public:
     void eat(int);
     void play(int);
     void sleep(int);
+};
+
+class Bird : public Animal {
+    public :
+        Bird(int, int, int);
+        void fly(int);
+        void sing();
 };
 
 Animal::Animal(int happiness, int energy, int fullness) : happiness(happiness), energy(energy), fullness(fullness) {}
@@ -87,11 +93,26 @@ void Animal::sleep(int hour) {
     
 }
 
+Bird::Bird(int happiness, int energy, int fullness) : Animal(happiness, energy, fullness) {}
+
+/* Bird::Bird(int happiness, int energy, int fullness) : Animal(happiness, energy, fullness) {
+    this->happiness = happiness;
+    this->energy = energy;
+    this->fullness = fullness;
+} */
+
+void Bird::fly(int hour) {
+    if (hour <= 0) return;
+    this->energy -= 5*hour;
+}
+
+void Bird::sing() {
+    this->happiness += 5;
+}
+
 int main(void) {
-    Animal dog(70, 1, 70);
-    //dog.eat(30);
-    //dog.play(1);
-    dog.sleep(10);
-    cout << dog.getHappiness() << "/" << dog.getEnergy() << "/" << dog.getFullness() << endl;
+    Bird pigeon(-50,-50,-50);
+    pigeon.fly(100);
+    cout << pigeon.getEnergy() << "/" << pigeon.getFullness() << "/"  << pigeon.getHappiness() << endl;
 
 }
