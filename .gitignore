@@ -4,4 +4,7 @@ test.c
 *.out
 ./*/*.out
 
+*.exe
+./*/*exe
+
 .vscode    

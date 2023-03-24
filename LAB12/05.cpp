@@ -20,7 +20,7 @@ class Taxi : public Transportation {
             this->distance = distance;
         }
 
-        float fare() {
+        float fare() override {
             return this->farePerKm += this->distance * 2;
         }
 };
@@ -33,7 +33,7 @@ public:
         this->farePerKm = 6.5;
     }
 
-    float fare() {
+    float fare() override {
         return this->farePerKm;
     }
 };
@@ -52,7 +52,7 @@ public:
         this->station = station;
     }
 
-    float fare() {
+    float fare() override {
         return this->farePerKm += this->station * 5;
     }
 };
